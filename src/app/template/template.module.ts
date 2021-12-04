@@ -9,11 +9,14 @@ import { SwitchesComponent } from './switches/switches.component';
 
 
 
+
 @NgModule({
   declarations: [
     BasicosComponent,
     DinamicosComponent,
-    SwitchesComponent
+    SwitchesComponent,
+
+    
   ],
   imports: [
     CommonModule,
