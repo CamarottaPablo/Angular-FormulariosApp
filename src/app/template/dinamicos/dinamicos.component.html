@@ -9,11 +9,11 @@
     <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre</label>
         <div class="col-sm-9">
-            <input class="form-control"
-                   required
-                   name="nombre"
-                   [(ngModel)]="persona.nombre"
-                   placeholder="Nombre de la persona">
+            <input  class="form-control"
+                    placeholder="Nombre de la persona"
+                    [(ngModel)]="persona.nombre"
+                    name="nombre"                    
+                    required>
                 <span  class="form-text text-danger"
                        *ngIf="miFormulario.controls.nombre?.errors && miFormulario.controls.nombre?.touched">
                     Este campo es obligatorio
@@ -23,16 +23,19 @@
 
     <!-- Agregar Favorito -->
     <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Nombre</label>
+        <label class="col-sm-3 col-form-label">Agregar</label>
         <div class="col-sm-9">
 
             <div class="input-group">
                 <input class="form-control"
                 placeholder="Agregar favorito"
-                [(ngModel)]="persona.nombre">
+                [(ngModel)]="nuevoJuego"
+                (keyup.enter)="agregarJuego()"
+                name="nuevoJuego">
 
                 <button class="btn btn-outline-primary"
-                        type="button">
+                        type="button"
+                        (click)="agregarJuego()">
                     Agregar
                 </button>
             </div>
