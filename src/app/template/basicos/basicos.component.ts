@@ -23,6 +23,7 @@ export class BasicosComponent implements OnInit {
   }
 
   nombreValido(): boolean {
+    
     return this.miFormulario?.controls.producto?.invalid 
         && this.miFormulario?.controls.producto?.touched
   }
