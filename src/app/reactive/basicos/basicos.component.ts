@@ -15,13 +15,19 @@ export class BasicosComponent {
   //   existencias: new FormControl(5),
   // })
   miFormulario: FormGroup = this.fb.group({
-    nombre     : [ 'RTX 4080ti', [ Validators.required, Validators.minLength(3) ] ],
-    precio     : [ 0, [ Validators.required, Validators.min(0) ] ],
-    existencias: [ 0, [ Validators.required, Validators.min(0) ] ],
+    nombre     : [ , [ Validators.required, Validators.minLength(3) ] ],
+    precio     : [ , [ Validators.required, Validators.min(0) ] ],
+    existencias: [ , [ Validators.required, Validators.min(0) ] ],
 
   })
 
   constructor( private fb: FormBuilder ) { }
+
+
+  campoNoEsValido( campo: string ) { 
+    return this.miFormulario.controls[campo].errors 
+            && this.miFormulario.controls[campo].touched;
+  }
 
 
 
