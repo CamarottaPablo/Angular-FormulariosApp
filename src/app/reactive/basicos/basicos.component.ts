@@ -7,7 +7,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styles: [
   ]
 })
-export class BasicosComponent {
+export class BasicosComponent implements OnInit {
 
   // miFormulario: FormGroup = new FormGroup({
   //   nombre     : new FormControl('RTX 4080ti'),
@@ -15,7 +15,7 @@ export class BasicosComponent {
   //   existencias: new FormControl(5),
   // })
   miFormulario: FormGroup = this.fb.group({
-    nombre     : [ , [ Validators.required, Validators.minLength(3) ] ],
+    nombre     : [ '', [ Validators.required, Validators.minLength(3) ] ],
     precio     : [ , [ Validators.required, Validators.min(0) ] ],
     existencias: [ , [ Validators.required, Validators.min(0) ] ],
 
@@ -23,11 +23,26 @@ export class BasicosComponent {
 
   constructor( private fb: FormBuilder ) { }
 
+  ngOnInit() {
+      this.miFormulario.reset({
+        nombre: 'RTX 4080ti',
+        precio: 1600
+      })
+  }
 
-  campoNoEsValido( campo: string ) { 
+  campoEsValido( campo: string ) { 
     return this.miFormulario.controls[campo].errors 
             && this.miFormulario.controls[campo].touched;
   }
+
+  guardar() {
+    if ( this.miFormulario.invalid ) {
+      this.miFormulario.markAllAsTouched();
+      return 
+    }
+    this.miFormulario.reset();
+  }
+
 
 
 

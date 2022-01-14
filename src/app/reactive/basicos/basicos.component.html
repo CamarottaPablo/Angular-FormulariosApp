@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col">
 
-        <form autocomplete="off" [formGroup]="miFormulario">
+        <form  (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario">
 
             <!-- Campo de producto -->
             <div class="mb-3 row">
@@ -17,7 +17,7 @@
                             placeholder="Nombre del producto">
 
                     <span   class="form-text text-danger"
-                            *ngIf="campoNoEsValido('nombre')">
+                            *ngIf="campoEsValido('nombre')">
                         Debe de ser de 3 letras
                     </span>
                 </div>
@@ -32,7 +32,7 @@
                             formControlName="precio"
                             placeholder="Precio del producto">
                     <span   class="form-text text-danger"
-                            *ngIf="campoNoEsValido('precio')">
+                            *ngIf="campoEsValido('precio')">
                         El número debe ser igual o mayor a cero.
                     </span>
                 </div>
@@ -48,7 +48,7 @@
                             placeholder="Existencias del producto">
 
                     <span   class="form-text text-danger"
-                            *ngIf="campoNoEsValido('existencias')">
+                            *ngIf="campoEsValido('existencias')">
                         Las existencias deben ser igual o mayor a cero.
                     </span>
                 </div>
@@ -57,8 +57,7 @@
             <div class="row">
                 <div class="col">
                     <button type="submit" 
-                            class="btn btn-primary float-end"
-                            [disabled]="miFormulario.invalid">
+                            class="btn btn-primary float-end">
                         Guardar
                     </button>
                 </div>
