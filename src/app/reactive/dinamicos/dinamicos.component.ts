@@ -49,5 +49,9 @@ export class DinamicosComponent {
     }
     this.miFormulario.reset();
   }
+
+  borrar( i: number ) {
+    this.favoritosArr.removeAt(i);
+  }
   
 }
