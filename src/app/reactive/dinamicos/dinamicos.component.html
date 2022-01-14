@@ -15,7 +15,6 @@
                 
                 <span   class="form-text text-danger"
                         *ngIf="campoEsValido('nombre')">
-                        Debe de ser de 3 letras
                         Este campo es obligatorio
                 </span>
         </div>
@@ -28,12 +27,13 @@
 
             <div class="input-group">
                 <input  class="form-control"
+                        [formControl]="nuevoFavorito"
                         placeholder="Agregar favorito"
-                        (keyup.enter)="11">
+                        (keyup.enter)="agregarFavorito">
 
                 <button class="btn btn-outline-primary"
                         type="button"
-                        (click)="11">
+                        (click)="agregarFavorito()">
                     Agregar
                 </button>
             </div>
@@ -43,18 +43,19 @@
        <!-- Lista de Juegos Favoritos -->
        <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Favoritos</label>
-        <div class="col-sm-9">
-            <!-- <div class="input-group mb-1"
-                *ngFor="let juego of persona.favoritos; let i = index">
-                <input  class="form-control">  
+        <div class="col-sm-9" formArrayName="favoritos">
+
+            <div class="input-group mb-1"
+                 *ngFor="let favorito of favoritosArr.controls; let i = index">
+
+                <input  class="form-control"
+                        [formControlName]="i">  
 
                 <button class="btn btn-outline-danger"
-                        type="button"
-                        (click)="11">
+                        type="button">
                     Eliminar
-                </button>
-                        
-            </div> -->
+                </button>    
+            </div>
         </div>
     </div>
 
@@ -71,6 +72,19 @@
     </div>
 
 </form>
-<!-- 
-<span>Persona</span>
-<pre>{{ persona | json }}</pre> -->
+
+    <span>Valid</span>
+    <pre>{{ miFormulario.valid }}</pre>
+    <br>
+
+    <span>Value</span>
+    <pre>{{ miFormulario.value | json }}</pre>
+    <br>
+
+    <span>Agregar Juego</span>
+    <pre>{{ nuevoFavorito.valid }}</pre>
+    <br>
+
+    <span>Value</span>
+    <pre>{{ nuevoFavorito.value }}</pre>
+
