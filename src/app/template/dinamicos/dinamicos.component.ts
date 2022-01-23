@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component } from '@angular/core';
 
 interface Persona {
   nombre: string;
@@ -7,9 +6,12 @@ interface Persona {
 }
 
 interface Favorito {
-  id    : number;
+  id: number;
   nombre: string;
 }
+
+
+
 @Component({
   selector: 'app-dinamicos',
   templateUrl: './dinamicos.component.html',
@@ -18,15 +20,13 @@ interface Favorito {
 })
 export class DinamicosComponent {
 
-  //  @ViewChild('miFormulario') miFormulario!: NgForm;
-
   nuevoJuego: string = '';
 
   persona: Persona = {
-    nombre: 'Pablo',
+    nombre: 'Fernando',
     favoritos: [
-      { id: 1, nombre: 'Metal Gear'},
-      { id: 2, nombre: 'Death Stranding'}
+      { id: 1, nombre: 'Metal Gear' },
+      { id: 2, nombre: 'Death Stranding' },
     ]
   }
 
@@ -40,13 +40,12 @@ export class DinamicosComponent {
     this.nuevoJuego = '';
   }
 
-  eliminar( index: number) {
+  eliminar( index: number ) {
     this.persona.favoritos.splice(index, 1);
   }
-  
+
 
   guardar() {
-
+    console.log('formulario posteado');
   }
-
 }

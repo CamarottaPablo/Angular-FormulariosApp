@@ -16,24 +16,24 @@ export class SwitchesComponent implements OnInit {
   });
 
   persona = {
-    genero        : 'F',
+    genero: 'F',
     notificaciones: true,
   }
-
 
 
   constructor( private fb: FormBuilder ) { }
 
   ngOnInit() {
-      this.miFormulario.reset({ 
-        ...this.persona,
-        condiciones: false 
-      });
+    this.miFormulario.reset({ 
+      ...this.persona,
+      condiciones: false
+    });
 
-      this.miFormulario.valueChanges.subscribe( ({ condiciones, ...rest}) => {
-      //delete form.condiciones;
-        this.persona = rest;
-      } )
+    this.miFormulario.valueChanges.subscribe( ({ condiciones, ...rest }) => {
+      // delete form.condiciones;
+      this.persona = rest;
+    })
+
   }
 
   guardar() {

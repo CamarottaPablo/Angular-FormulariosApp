@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { nombreApellidoPattern, emailPattern, noPuedeSerStrider } from '../../../shared/validator/validaciones';
 import { ValidatorService } from '../../../shared/validator/validator.service';
 import { EmailValidatorService } from '../../../shared/validator/email-validator.service';
 
@@ -16,11 +17,12 @@ export class RegistroComponent implements OnInit {
     nombre: ['', [ Validators.required, Validators.pattern( this.validatorService.nombreApellidoPattern ) ] ],
     email: ['', [ Validators.required, Validators.pattern( this.validatorService.emailPattern ) ], [ this.emailValidator ] ],
     username: ['', [ Validators.required, this.validatorService.noPuedeSerStrider ] ],
-    password: ['', [ Validators.required, Validators.minLength(6) ] ],
-    password2: ['', [ Validators.required ] ],
+    password: ['', [ Validators.required, Validators.minLength(6) ]  ],
+    password2: ['', [ Validators.required ]  ],
   }, {
-    validators: [ this.validatorService.camposIguales('password', 'password2') ]
+    validators: [ this.validatorService.camposIguales('password','password2') ]
   });
+
 
   get emailErrorMsg(): string {
     
@@ -30,9 +32,10 @@ export class RegistroComponent implements OnInit {
     } else if ( errors?.pattern ) {
       return 'El valor ingresado no tiene formato de correo';
     } else if ( errors?.emailTomado ) {
-      return 'El email ya fue tomado'
+      return 'El email ya fue tomado';
     }
-    return ''
+
+    return '';
   }
 
   constructor( private fb: FormBuilder,
@@ -42,23 +45,25 @@ export class RegistroComponent implements OnInit {
   ngOnInit(): void {
 
     this.miFormulario.reset({
-      nombre: 'Pablo Camarotta',
+      nombre: 'Fernando Herrera',
       email: 'test1@test.com',
-      username: 'pablo_camarotta',
+      username: 'fernando_her85',
       password: '123456',
-      password2: '123456',
+      password2: '123456'
     })
-
   }
 
   campoNoValido( campo: string ) {
     return this.miFormulario.get(campo)?.invalid
-          && this.miFormulario.get(campo)?.touched;
+            && this.miFormulario.get(campo)?.touched;
   }
 
-  
+
+
 
   submitFormulario() {
+
+    console.log(this.miFormulario.value);
 
     this.miFormulario.markAllAsTouched();
 
