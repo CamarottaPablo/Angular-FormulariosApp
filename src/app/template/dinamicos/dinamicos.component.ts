@@ -23,7 +23,7 @@ export class DinamicosComponent {
   nuevoJuego: string = '';
 
   persona: Persona = {
-    nombre: 'Fernando',
+    nombre: 'Pablo',
     favoritos: [
       { id: 1, nombre: 'Metal Gear' },
       { id: 2, nombre: 'Death Stranding' },
